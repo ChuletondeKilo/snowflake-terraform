@@ -1,32 +1,29 @@
 terraform {
   required_providers {
     snowflake = {
-      source  = "Snowflake-Labs/snowflake"
-      version = "0.63.0"
+      source  = "snowflakedb/snowflake"
+      version = "2.8.0"
     }
   }
 
-  backend "s3" {
-    bucket         = "<your-bucket-name>"
-    key            = "terraform-staging.tfstate"
-    region         = "<bucket-region>"
-    # Optional DynamoDB for state locking. See https://developer.hashicorp.com/terraform/language/settings/backends/s3 for details.
-    # dynamodb_table = "terraform-state-lock-table"
-    encrypt        = true
-    role_arn       = "arn:aws:iam::<your-aws-account-no>:role/<terraform-s3-backend-access-role>"
+  backend "local" {
+    path = "./terraform_dev.tfstate"
   }
 }
 
 provider "snowflake" {
-  username    = "<your_snowflake_username>"
-  account     = "<your_snowflake_account_identifier>"
-  role        = "<your_snowflake_role>"
-  private_key = var.snowflake_private_key
+  user    = "psole"
+  account_name = "LJ40274"
+  organization_name = "TCCBYYI"
+  role        = "ACCOUNTADMIN"
+  authenticator          = "SNOWFLAKE_JWT"
+  private_key            = file("~/.ssh/snowflake_key.p8")
 }
 
-module "snowflake_resources" {
-  source              = "../modules/snowflake_resources"
-  time_travel_in_days = 1
-  database            = var.database
+module "snowflake_assets" {
+  source              = "../modules/snowflake_assets"
   env_name            = var.env_name
+  providers = {
+    snowflake = snowflake  # <-- explicitly pass root provider
+  }
 }

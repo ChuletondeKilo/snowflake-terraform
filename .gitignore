@@ -1,0 +1,5 @@
+#  Local Dev
+dev/.terraform*
+dev/terraform_dev.tfstate
+dev/terraform_dev.tfstate*
+snowflake_key.pub
