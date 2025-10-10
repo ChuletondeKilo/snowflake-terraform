@@ -3,8 +3,3 @@ variable "env_name" {
   default = "DEV"
   description = "values: PROD, DEV"
 }
-
-variable "monitors" {
-  type = map(string)
-  description = "Resource monitors id's"
-}
