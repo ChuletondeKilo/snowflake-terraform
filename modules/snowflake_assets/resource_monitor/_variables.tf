@@ -1,5 +1,5 @@
 variable "env_name" {
-  type = string
-  default = "DEV"
+  type        = string
+  default     = "DEV"
   description = "values: PROD, DEV"
 }

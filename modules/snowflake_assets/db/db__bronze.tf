@@ -8,6 +8,11 @@ resource "snowflake_schema" "landing_zone" {
   name     = "LANDING_ZONE"
 }
 
+resource "snowflake_schema" "stages" {
+  database = snowflake_database.bronze_db.name
+  name     = "STAGES"
+}
+
 resource "snowflake_schema" "staging_zone" {
   database = snowflake_database.bronze_db.name
   name     = "STAGING_ZONE"
