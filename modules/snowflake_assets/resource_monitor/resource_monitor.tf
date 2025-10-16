@@ -3,7 +3,7 @@ resource "snowflake_resource_monitor" "rsc_monitor_developers" {
   credit_quota = var.env_name == "PROD" ? 100 : 50
 
   frequency       = "MONTHLY"
-  start_timestamp = "2025-10-14 00:00"
+  start_timestamp = "2025-10-17 00:00"
   end_timestamp   = "2035-12-07 00:00"
 
   notify_triggers           = [40, 50, 70]
@@ -17,7 +17,7 @@ resource "snowflake_resource_monitor" "rsc_monitor_integration" {
   credit_quota = var.env_name == "PROD" ? 100 : 50
 
   frequency       = "MONTHLY"
-  start_timestamp = "2025-10-14 00:00"
+  start_timestamp = "2025-10-17 00:00"
   end_timestamp   = "2035-12-07 00:00"
 
   notify_triggers           = [40, 50, 70]
@@ -31,7 +31,7 @@ resource "snowflake_resource_monitor" "rsc_monitor_transform" {
   credit_quota = var.env_name == "PROD" ? 100 : 50
 
   frequency       = "MONTHLY"
-  start_timestamp = "2025-10-14 00:00"
+  start_timestamp = "2025-10-17 00:00"
   end_timestamp   = "2035-12-07 00:00"
 
   notify_triggers           = [40, 50, 70]
@@ -45,7 +45,7 @@ resource "snowflake_resource_monitor" "rsc_monitor_consumer" {
   credit_quota = var.env_name == "PROD" ? 100 : 50
 
   frequency       = "MONTHLY"
-  start_timestamp = "2025-10-14 00:00"
+  start_timestamp = "2025-10-17 00:00"
   end_timestamp   = "2035-12-07 00:00"
 
   notify_triggers           = [40, 50, 70]
